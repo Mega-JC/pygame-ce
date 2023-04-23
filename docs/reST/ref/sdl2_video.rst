@@ -396,11 +396,11 @@
 .. class:: Image
 
    | :sl:`pygame object that represents a portion of a texture`
-   | :sg:`Image(textureOrImage, srcrect=None) -> Image`
+   | :sg:`Image(texture_or_image, srcrect=None) -> Image`
 
    Creates an Image.
 
-   :param Texture | Image textureOrImage: The Texture or an existing Image object to create the Image from.
+   :param Texture | Image texture_or_image: The Texture or an existing Image object to create the Image from.
    :param srcrect: The rectangular portion of the Texture or Image object passed to ``texture_or_image``.
 
    An Image object represents a portion of a :class:`Texture`. Specifically, they can be used

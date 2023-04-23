@@ -986,12 +986,12 @@ cdef class Image:
         self._color = pgColor_NewLength(defaultColor, 3)
         self.alpha = 255
 
-    def __init__(self, textureOrImage, srcrect=None):
+    def __init__(self, texture_or_image, srcrect=None):
         """pygame object that represents a portion of a texture
 
         Creates an Image.
 
-        :param Texture | Image textureOrImage: The Texture or an existing Image object to create the Image from.
+        :param Texture | Image texture_or_image: The Texture or an existing Image object to create the Image from.
         :param srcrect: The rectangular portion of the Texture or Image object passed to ``texture_or_image``.
 
         An Image object represents a portion of a :class:`Texture`. Specifically, they can be used
@@ -1000,13 +1000,13 @@ cdef class Image:
         cdef SDL_Rect temp
         cdef SDL_Rect *rectptr
 
-        if isinstance(textureOrImage, Image):
-            self.texture = textureOrImage.texture
-            self.srcrect = pgRect_New(&(<Rect>textureOrImage.srcrect).r)
+        if isinstance(texture_or_image, Image):
+            self.texture = texture_or_image.texture
+            self.srcrect = pgRect_New(&(<Rect>texture_or_image.srcrect).r)
         else:
-            self.texture = textureOrImage
-            self.srcrect = textureOrImage.get_rect()
-        self.blend_mode = textureOrImage.blend_mode
+            self.texture = texture_or_image
+            self.srcrect = texture_or_image.get_rect()
+        self.blend_mode = texture_or_image.blend_mode
 
         if srcrect is not None:
             rectptr = pgRect_FromObject(srcrect, &temp)
