@@ -393,6 +393,7 @@
 
       While this function will work with streaming textures,for optimization reasons you may not
       get the pixels back if you lock the texture afterward.
+
 .. class:: Image
 
    | :sl:`pygame object that represents a portion of a texture`
