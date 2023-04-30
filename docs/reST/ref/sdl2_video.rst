@@ -8,8 +8,9 @@
 
 .. warning::
 	This module isn't ready for prime time yet, it's still in development.
-        These docs are primarily meant to help the pygame developers and super-early adopters
-        who are in communication with the developers. This API will change.
+        These docs are primarily meant to help the pygame developers and
+        super-early adopters who are in communication with the developers.
+        This API will change.
 
 | :sl:`Experimental pygame module for porting new SDL video systems`
 
@@ -61,10 +62,14 @@
 
    :param str title: The title of the window.
    :param (int, int) size: The size of the window, in screen coordinates.
-   :param (int, int) or int position: A tuple specifying the window position, or ``WINDOWPOS_CENTERED``, or ``WINDOWPOS_UNDEFINED``.
-   :param bool fullscreen: Create a fullscreen window using the window size as the resolution (videomode change).
-   :param bool fullscreen_desktop: Create a fullscreen window using the current desktop resolution
-   :param bool opengl: Create a window with support for an OpenGL context. You will still need to create an OpenGL context separately.
+   :param (int, int) or int position: A tuple specifying the window position, or
+                                      ``WINDOWPOS_CENTERED``, or ``WINDOWPOS_UNDEFINED``.
+   :param bool fullscreen: Create a fullscreen window using the window size as
+                           the resolution (videomode change).
+   :param bool fullscreen_desktop: Create a fullscreen window using the current
+                                   desktop resolution
+   :param bool opengl: Create a window with support for an OpenGL context. You
+                       will still need to create an OpenGL context separately.
    :param bool vulkan: Create a window with support for a Vulkan instance.
    :param bool hidden: Create a hidden window.
    :param bool borderless: Create a window without borders.
@@ -75,16 +80,23 @@
    :param bool input_focus: Create a window with input focus.
    :param bool mouse_focus: Create a window with mouse focus.
    :param bool foreign: Marks a window not created by SDL.
-   :param bool allow_highdpi: Create a window in high-DPI mode if supported (>= SDL 2.0.1)
-   :param bool mouse_capture: Create a window that has the mouse captured (unrelated to INPUT_GRABBED, >= SDL 2.0.4)
-   :param bool always_on_top: Create a window that is always on top (X11 only, >= SDL 2.0.5)
-   :param bool skip_taskbar: Create a window that should not be added to the taskbar (X11 only, >= SDL 2.0.5)
-   :param bool utility: Create a window that should be treated as a utility window (X11 only, >= SDL 2.0.5)
-   :param bool tooltip: Create a window that should be treated as a tooltip (X11 only, >= SDL 2.0.5)
-   :param bool popup_menu: Create a window that should be treated as a popup menu (X11 only, >= SDL 2.0.5)
-   
+   :param bool allow_highdpi: Create a window in high-DPI mode if supported
+                              (>= SDL 2.0.1)
+   :param bool mouse_capture: Create a window that has the mouse captured
+                              (unrelated to INPUT_GRABBED, >= SDL 2.0.4)
+   :param bool always_on_top: Create a window that is always on top
+                              (X11 only, >= SDL 2.0.5)
+   :param bool skip_taskbar: Create a window that should not be added to the
+                             taskbar (X11 only, >= SDL 2.0.5)
+   :param bool utility: Create a window that should be treated as a utility
+                        window (X11 only, >= SDL 2.0.5)
+   :param bool tooltip: Create a window that should be treated as a tooltip
+                        (X11 only, >= SDL 2.0.5)
+   :param bool popup_menu: Create a window that should be treated as a popup menu 
+                           (X11 only, >= SDL 2.0.5)
+
    .. classmethod:: from_display_module
-   
+
       | :sl:`Create a Window object using window data from display module`
       | :sg:`from_display_module() -> Window`
 
@@ -107,14 +119,15 @@
       | :sg:`relative_mouse -> bool`
 
       Gets or sets the window's relative mouse mode state.
-      SDL2 docs: *"While the mouse is in relative mode, the cursor is hidden, the mouse position
-      is constrained to the window, and SDL will report continuous relative mouse
-      motion even if the mouse is at the edge of the window.*
+      SDL2 docs: *"While the mouse is in relative mode, the cursor is hidden,
+      the mouse position is constrained to the window, and SDL will report
+      continuous relative mouse motion even if the mouse is at the edge of the
+      window.*
 
       *This function will flush any pending mouse motion."*
 
-      If :func:`pygame.mouse.set_visible` was called with ``True`` the input will be grabbed,
-      and the mouse will enter endless relative motion mode.
+      If :func:`pygame.mouse.set_visible` was called with ``True`` the input
+      will be grabbed, and the mouse will enter endless relative motion mode.
 
    .. method:: set_windowed
 
@@ -145,9 +158,9 @@
       | :sl:`Destroy the window`
       | :sg:`destroy() -> None`
 
-      Destroys the internal window data of this Window object. This method is called
-      automatically when this Window object is garbage collected, so there usually aren't
-      any reasons to call it manually.
+      Destroys the internal window data of this Window object. This method is
+      called automatically when this Window object is garbage collected, so
+      there usually aren't any reasons to call it manually.
 
       Other methods that try to manipulate that window data will raise an error.
 
@@ -212,7 +225,7 @@
 
    .. attribute:: id
 
-      | :sl:`Get the unique window ID`
+      | :sl:`Get the unique window ID (**read-only**)`
       | :sg:`id -> int`
 
    .. attribute:: size
@@ -232,8 +245,8 @@
 
    .. attribute:: display_index
 
-      | :sl:`Get the index of the display that owns the window`
-      | :sg:`get_display_index() -> int`
+      | :sl:`Get the index of the display that owns the window (**read-only**)`
+      | :sg:`get_display_index -> int`
 
    .. method:: set_modal_for
 
@@ -254,12 +267,16 @@
    :param Renderer renderer: The rendering context for the texture.
    :param tuple size: The width and height for the texture.
    :param int depth: The pixel format (0 to use the default).
-   :param bool static: Initialize the texture as static (changes rarely, not lockable).
-   :param bool streaming: Initialize the texture as streaming (changes frequently, lockable).
-   :param bool target: Initialize the texture as target (can be used as a rendering target).
+   :param bool static: Initialize the texture as static
+                       (changes rarely, not lockable).
+   :param bool streaming: Initialize the texture as streaming
+                          (changes frequently, lockable).
+   :param bool target: Initialize the texture as target
+                       (can be used as a rendering target).
    :param int scale_quality: Set the texture scale quality. Can be 0
-       (nearest pixel sampling), 1 (linear filtering, supported by OpenGL and Direct3D)
-       and 2 (anisotropic filtering, supported by Direct3D)
+                             (nearest pixel sampling), 1
+                             (linear filtering, supported by OpenGL and Direct3D)
+                             and 2 (anisotropic filtering, supported by Direct3D)
 
    One of ``static``, ``streaming``, or ``target`` can be set
    to ``True``. If all are ``False``, then ``static`` is used.
@@ -270,16 +287,16 @@
    rotate and resize when drawn unto a :class:`Renderer`
    (an object that manages a rendering context inside a :class:`Window`) on most GPUs.
 
-   Since textures are stored in GPU video memory, they aren't as easy to modify as the image data of
-   :class:`pygame.Surface` objects, which reside in RAM.
+   Since textures are stored in GPU video memory, they aren't as easy to modify
+   as the image data of :class:`pygame.Surface` objects, which reside in RAM.
    
    Textures can be modified in 2 ways:
-   
-      * By drawing other textures unto them, which is achieved by marking them as "target" textures, and temporarily setting them as the rendering target of their Renderer object.
-      
+        
+      * By drawing other textures unto them, achieved by marking them as "target" textures and setting them as the rendering target of their Renderer object (if properly configured and supported).
+         
       * By updating them with a Surface.
          **WARNING:** This is a slow operation, as it requires image data to be uploaded from RAM to VRAM, a generally slow process.
-      
+   
    .. staticmethod:: from_surface
 
       | :sl:`Create a texture from an existing surface`
@@ -290,17 +307,17 @@
 
    .. attribute:: renderer
 
-      | :sl:`Get the renderer associated with the texture`
+      | :sl:`Get the renderer associated with the texture (**read-only**)`
       | :sg:`renderer -> Renderer`
 
    .. attribute:: width
 
-      | :sl:`Get the width of the texture`
+      | :sl:`Get the width of the texture (**read-only**)`
       | :sg:`width -> int`
 
    .. attribute:: height
 
-      | :sl:`Get the height of the texture`
+      | :sl:`Get the height of the texture (**read-only**)`
       | :sg:`height -> int`
 
    .. attribute:: alpha
@@ -326,22 +343,26 @@
       | :sl:`Get the rectangular area of the texture`
       | :sg:`get_rect(**kwargs) -> Rect`
 
-      Like :meth:`pygame.Surface.get_rect`, this method returns a **new** rectangle covering the entire texture.
-      This rectangle will always start at 0, 0 with a ``width`` and ``height`` the same size as the texture.
+      Like :meth:`pygame.Surface.get_rect`, this method returns a **new**
+      rectangle covering the entire texture. This rectangle will always
+      start at 0, 0 with a ``width`` and ``height`` the same size as the
+      texture.
 
    .. method:: draw
 
       | :sl:`Copy a portion of the texture to the rendering target`
       | :sg:`draw(srcrect=None, dstrect=None, angle=0, origin=None, flip_x=False, flip_y=False) -> None`
 
-      :param srcrect: The source rectangle on the texture, or ``None`` for the entire
-                      texture.
-      :param dstrect: The destination rectangle on the rendering target, or ``None`` for
-                      the entire rendering target. The texture will be stretched to fill
-                      ``dstrect``.
-      :param float angle: The angle (in degrees) to rotate dstrect around (clockwise).
+      :param srcrect: The source rectangle on the texture, or ``None`` for the
+                      entire texture.
+      :param dstrect: The destination rectangle on the rendering target, or
+                      ``None`` for the entire rendering target. The texture
+                      will be stretched to fill ``dstrect``.
+      :param float angle: The angle (in degrees) to rotate dstrect around
+                          (clockwise).
       :param origin: The point around which dstrect will be rotated.
-                     If ``None``, it will equal the center: (dstrect.w/2, dstrect.h/2).
+                     If ``None``, it will equal the center:
+                     (dstrect.w/2, dstrect.h/2).
       :param bool flip_x: Flip the drawn texture portion horizontally (x - axis).
       :param bool flip_y: Flip the drawn texture portion vertically (y - axis).
 
@@ -386,13 +407,14 @@
       :param Surface surface: The source surface.
       :param area: The rectangular area of the texture to update.
 
-      This is a fairly slow function, intended for use with static textures that do not change often.
+      This is a fairly slow function, intended for use with static textures
+      that do not change often.
 
-      If the texture is intended to be updated often,
-      it is preferred to create the texture as streaming and use the locking functions.
+      If the texture is intended to be updated often, it is preferred to create
+      the texture as streaming and use the locking functions.
 
-      While this function will work with streaming textures,for optimization reasons you may not
-      get the pixels back if you lock the texture afterward.
+      While this function will work with streaming textures,for optimization
+      reasons you may not get the pixels back if you lock the texture afterward.
 
 .. class:: Image
 
@@ -401,27 +423,35 @@
 
    Creates an Image.
 
-   :param Texture | Image texture_or_image: The Texture or an existing Image object to create the Image from.
-   :param srcrect: The rectangular portion of the Texture or Image object passed to ``texture_or_image``.
+   :param Texture | Image texture_or_image: The Texture or an existing Image
+                                            object to create the Image from.
+   :param srcrect: The rectangular portion of the Texture or Image object
+                   passed to ``texture_or_image``.
 
-   An Image object represents a portion of a :class:`Texture`. Specifically, they can be used
-   to store and manipulate arguments for :meth:`Texture.draw` in a more user friendly way.
+   An Image object represents a portion of a :class:`Texture`. Specifically,
+   they can be used to store and manipulate arguments for :meth:`Texture.draw`
+   in a more user-friendly way.
 
    .. method:: get_rect
 
       | :sl:`Get the rectangular area of the Image`
       | :sg:`get_rect() -> Rect`
 
-      .. note:: The returned :class:`Rect` object might contain position information relative to the bounds of the :class:`Texture` or Image object the Image was created from.
+      .. note::
+         The returned :class:`Rect` object might contain position information
+         relative to the bounds of the :class:`Texture` or Image object the
+         Image was created from.
 
    .. method:: draw
 
       | :sl:`Copy a portion of the Image to the rendering target`
       | :sg:`draw(srcrect=None, dstrect=None) -> None`
 
-      :param srcrect: source rectangle specifying a sub-image, or None for the entire image.
-      :param dstrect: destination rectangle or position on the render target, or None for entire target.
-                      The image is stretched to fill dstrect.
+      :param srcrect: Source rectangle specifying a sub-image, or None for the
+                      entire image.
+      :param dstrect: Destination rectangle or position on the render target,
+                      or None for entire target. The image is stretched to
+                      fill dstrect.
 
    .. attribute:: angle
 
@@ -433,10 +463,11 @@
       | :sl:`Get or set the Image's origin of rotation`
       | :sg:`origin -> (float, float) or None`
 
-      Gets or sets the Image's origin of rotation, a 2D coordinate relative to the topleft coordinate of the Image's rectangular area.
-      
-      An origin of ``None`` means no origin was set and the Image will be rotated around
-      its center.
+      Gets or sets the Image's origin of rotation, a 2D coordinate relative to
+      the topleft coordinate of the Image's rectangular area.
+
+      An origin of ``None`` means no origin was set and the Image will be
+      rotated around its center.
 
    .. attribute:: flip_x
 
@@ -480,36 +511,44 @@
 
    Creates a 2D rendering context for a window.
 
-   :param Window window: The window unto which the rendering context should be placed.
-   :param int index: The index of rendering driver to initialize, or -1 to init the first
-                     supporting the requested options.
+   :param Window window: The window unto which the rendering context should be
+                         placed.
+   :param int index: The index of rendering driver to initialize, or -1 to init
+                     the first supporting the requested options.
    :param int accelerated: If 1, the renderer uses hardware acceleration.
                            if 0, the renderer is a software fallback.
-                           -1 gives precedence to renderers using hardware acceleration.
-   :param bool vsync: If ``True`` :meth:`Renderer.present` is synchronized with the refresh rate.
-   :param bool target_texture: Whether the renderer should support setting :class:`Texture` objects
-                               as target textures, to enable drawing unto them. 
+                           -1 gives precedence to renderers using hardware
+                           acceleration.
+   :param bool vsync: If ``True`` :meth:`Renderer.present` is synchronized with
+                      the refresh rate.
+   :param bool target_texture: Whether the renderer should support setting
+                              :class:`Texture` objects as target textures, to
+                              enable drawing unto them. 
 
 
-   :class:`Renderer` objects provide a cross-platform API for rendering 2D graphics unto a :class:`Window`,
-   by using either Metal (MacOS), OpenGL (MacOS, Windows, Linux) or Direct3D (Windows) rendering drivers,
-   depending on what is set or is available on a system during their creation.
+   :class:`Renderer` objects provide a cross-platform API for rendering 2D
+   graphics unto a :class:`Window`, by using either Metal (MacOS), OpenGL
+   (MacOS, Windows, Linux) or Direct3D (Windows) rendering drivers, depending
+   on what is set or is available on a system during their creation.
 
-   They can be used to draw both :class:`Texture` objects and simple points, lines and rectangles
-   (which are colored based on :attr:`Renderer.draw_color`).
+   They can be used to draw both :class:`Texture` objects and simple points,
+   lines and rectangles (which are colored based on :attr:`Renderer.draw_color`).
 
-   If configured correctly, Renderer objects can have a :class:`Texture` object temporarily set as a target
-   texture (the Texture object must have been created with target texture usage support), which allows those
-   textures to be drawn unto. 
+   If configured correctly and supported by an underlying rendering driver, Renderer
+   objects can have a :class:`Texture` object temporarily set as a target texture
+   (the Texture object must have been created with target texture usage support),
+   which allows those textures to be drawn unto. 
 
-   To present drawn content unto the window, :meth:`Renderer.present` should be called. :meth:`Renderer.clear`
-   should be called to clear any drawn content with the set Renderer draw color.
+   To present drawn content unto the window, :meth:`Renderer.present` should be
+   called. :meth:`Renderer.clear` should be called to clear any drawn content
+   with the set Renderer draw color.
 
-   When things are drawn unto Renderer objects, an internal batching system is used to batch those "draw
-   calls" together, to have all of them be processed in one go when :meth:`Renderer.present` is called. This
-   is unlike :class:`pygame.Surface` objects, on which modifications via blitting occur immediately, but lends
-   well to the behavior of GPUs, as draw calls can be expensive on low-end models. Therefore, batching drawing
-   operations is preferred where possible.
+   When things are drawn unto Renderer objects, an internal batching system is
+   used by default to batch those "draw calls" together, to have all of them be
+   processed in one go when :meth:`Renderer.present` is called. This is unlike
+   :class:`pygame.Surface` objects, on which modifications via blitting occur
+   immediately, but lends well to the behavior of GPUs, as draw calls can be
+   expensive on lower-end models.
 
    .. classmethod:: from_window
 
@@ -569,16 +608,16 @@
       | :sg:`target -> Texture or None`
 
       Gets or sets the current rendering target.
-      A value of ``None`` means that no custom rendering target was set and the Renderer's window
-      will be drawn unto.
+      A value of ``None`` means that no custom rendering target was set and the
+      Renderer's window will be drawn unto.
 
    .. method:: blit
 
       | :sl:`Draw textures using a Surface-like API`
       | :sg:`blit(source, dest, area=None, special_flags=0)-> Rect`
 
-      For compatibility purposes. Draws :class:`Texture` objects unto the Renderer using a method signature
-      similar to :meth:`pygame.Surface.blit`.
+      For compatibility purposes. Draws :class:`Texture` objects unto the
+      Renderer using a method signature similar to :meth:`pygame.Surface.blit`.
 
       :param source: A :class:`Texture` or :class:`Image` to draw.
       :param dest: The drawing destination on the rendering target.
@@ -659,16 +698,17 @@
       | :sl:`Read pixels from current rendering target and create a Surface (slow operation, use sparingly)`
       | :sg:`to_surface(surface=None, area=None)-> Surface`
 
-      Read pixel data from the current rendering target and return a :class:`pygame.Surface` containing it.
+      Read pixel data from the current rendering target and return a
+      :class:`pygame.Surface` containing it.
 
-      :param Surface surface: A :class:`pygame.Surface` object to read the pixel data into.
-                     It must be large enough to fit the area, otherwise ``ValueError`` is
-                     raised.
-                     If set to ``None``, a new surface will be created.
+      :param Surface surface: A :class:`pygame.Surface` object to read the pixel
+                              data into. It must be large enough to fit the area, otherwise
+                              ``ValueError`` is raised.
+                              If set to ``None``, a new surface will be created.
       :param area: The area of the screen to read pixels from. The area is
-                  clipped to fit inside the viewport.
-                  If ``None``, the entire viewport is used.
-      
+                   clipped to fit inside the viewport.
+                   If ``None``, the entire viewport is used.
+
       .. warning:: This is a very slow operation, and should not be used frequently.
 
    .. method:: compose_custom_blend_mode
