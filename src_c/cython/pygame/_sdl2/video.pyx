@@ -71,46 +71,6 @@ import_pygame_color()
 import_pygame_surface()
 import_pygame_rect()
 
-class RendererDriverInfo:
-    def __repr__(self):
-        return "<%s(name: %s, flags: 0x%02x, num_texture_formats: %d, max_texture_width: %d, max_texture_height: %d)>" % (
-            self.__class__.__name__,
-            self.name,
-            self.flags,
-            self.num_texture_formats,
-            self.max_texture_width,
-            self.max_texture_height,
-        )
-
-def get_drivers():
-    """Yield info about the rendering drivers available for Renderer objects
-    """
-    cdef int num = SDL_GetNumRenderDrivers()
-    cdef SDL_RendererInfo info
-    cdef int ind
-    for ind from 0 <= ind < num:
-        SDL_GetRenderDriverInfo(ind, &info)
-        ret = RendererDriverInfo()
-        ret.name = info.name.decode("utf-8")
-        ret.flags = info.flags
-        ret.num_texture_formats = info.num_texture_formats
-        ret.max_texture_width = info.max_texture_width
-        ret.max_texture_height = info.max_texture_height
-        yield ret
-
-
-def get_grabbed_window():
-    """return the Window with input grab enabled,
-       or None if input isn't grabbed."""
-    cdef SDL_Window *win = SDL_GetGrabbedWindow()
-    cdef void *ptr
-    if win:
-        ptr = SDL_GetWindowData(win, "pg_window")
-        if not ptr:
-            return None
-        return <object>ptr
-    return None
-
 
 def messagebox(title, message,
                Window window=None,
@@ -192,6 +152,45 @@ def messagebox(title, message,
     free(c_buttons)
     return buttonid
 
+
+class RendererDriverInfo:
+    def __repr__(self):
+        return "<%s(name: %s, flags: 0x%02x, num_texture_formats: %d, max_texture_width: %d, max_texture_height: %d)>" % (
+            self.__class__.__name__,
+            self.name,
+            self.flags,
+            self.num_texture_formats,
+            self.max_texture_width,
+            self.max_texture_height,
+        )
+
+def get_drivers():
+    """yield info about the rendering drivers available for Renderer objects
+    """
+    cdef int num = SDL_GetNumRenderDrivers()
+    cdef SDL_RendererInfo info
+    cdef int ind
+    for ind from 0 <= ind < num:
+        SDL_GetRenderDriverInfo(ind, &info)
+        ret = RendererDriverInfo()
+        ret.name = info.name.decode("utf-8")
+        ret.flags = info.flags
+        ret.num_texture_formats = info.num_texture_formats
+        ret.max_texture_width = info.max_texture_width
+        ret.max_texture_height = info.max_texture_height
+        yield ret
+
+def get_grabbed_window():
+    """return the Window with input grab enabled,
+       or None if input isn't grabbed."""
+    cdef SDL_Window *win = SDL_GetGrabbedWindow()
+    cdef void *ptr
+    if win:
+        ptr = SDL_GetWindowData(win, "pg_window")
+        if not ptr:
+            return None
+        return <object>ptr
+    return None
 
 cdef class Window:
     DEFAULT_SIZE = 640, 480

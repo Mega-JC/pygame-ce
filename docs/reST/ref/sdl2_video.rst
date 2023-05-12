@@ -14,20 +14,6 @@
 
 | :sl:`Experimental pygame module for porting new SDL video systems`
 
-.. class:: RendererDriverInfo
-
-   | :sl:`pygame object encapsulating Renderer driver information`
-
-   Attributes:
-   
-   ::
-      
-      name
-      flags
-      num_texture_formats
-      max_texture_width
-      max_texture_height
-
 .. function:: messagebox
 
    | :sl:`create a native GUI message box`
@@ -43,9 +29,23 @@
    :param int escape_button: Button index to use if the escape key is hit (-1 for none).
    :return: The index of the button that was pushed.
 
+.. class:: RendererDriverInfo
+
+   | :sl:`pygame object encapsulating Renderer driver information`
+
+   Attributes:
+   
+   ::
+      
+      name
+      flags
+      num_texture_formats
+      max_texture_width
+      max_texture_height
+
 .. function:: get_drivers
 
-   | :sl:`Yield info about the rendering drivers available for Renderer objects`
+   | :sl:`yield info about the rendering drivers available for Renderer objects`
    | :sg:`get_drivers() -> Generator[RendererDriverInfo, None, None]`
 
 .. function:: get_grabbed_window
