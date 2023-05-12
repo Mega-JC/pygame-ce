@@ -2,7 +2,7 @@
 #define DOC_SDL2VIDEO "Experimental pygame module for porting new SDL video systems"
 #define DOC_SDL2_VIDEO_MESSAGEBOX "messagebox(title, message, window=None, info=False, warn=False, buttons=('OK',), return_button=0, escape_button=0)\ncreate a native GUI message box"
 #define DOC_SDL2_VIDEO_RENDERERDRIVERINFO "pygame object encapsulating Renderer driver information"
-#define DOC_SDL2_VIDEO_GETDRIVERS "get_drivers() -> Generator[RendererDriverInfo, None, None]\nYield info about the rendering drivers available for Renderer objects"
+#define DOC_SDL2_VIDEO_GETDRIVERS "get_drivers() -> Iterator[RendererDriverInfo]\nyield info about the rendering drivers available for Renderer objects"
 #define DOC_SDL2_VIDEO_GETGRABBEDWINDOW "get_drivers() -> Window or None\nget the current Window with input grab enabled"
 #define DOC_SDL2_VIDEO_WINDOW "Window(title="pygame", size=(640, 480), position=None, fullscreen=False, fullscreen_desktop=False, keywords) -> Window\npygame object that represents a window"
 #define DOC_SDL2_VIDEO_WINDOW_FROMDISPLAYMODULE "from_display_module() -> Window\nCreate a Window object using window data from display module"

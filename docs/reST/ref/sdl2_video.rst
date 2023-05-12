@@ -46,7 +46,7 @@
 .. function:: get_drivers
 
    | :sl:`yield info about the rendering drivers available for Renderer objects`
-   | :sg:`get_drivers() -> Generator[RendererDriverInfo, None, None]`
+   | :sg:`get_drivers() -> Iterator[RendererDriverInfo]`
 
 .. function:: get_grabbed_window
 
